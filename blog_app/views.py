@@ -1,11 +1,15 @@
 from .models import (
     Blog,
-    Tags
+    Tags,
+    Contact,
+    Subscribe
 )
 
 from .serializers import (
     BlogSerializer,
-    TagSerializer
+    TagSerializer,
+    ContactSerializer,
+    SubscribeSerializer
 )
 
 from rest_framework import viewsets
@@ -23,3 +27,13 @@ class TagViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
     serializer_class = TagSerializer
     queryset = Tags.objects.all()
+
+
+class ContactViewSet(viewsets.ModelViewSet):
+    serializer_class = ContactSerializer
+    queryset = Contact.objects.all()
+
+
+class SubscribeViewSet(viewsets.ModelViewSet):
+    serializer_class = SubscribeSerializer
+    queryset = Subscribe.objects.all()
