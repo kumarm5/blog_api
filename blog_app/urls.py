@@ -8,7 +8,7 @@ from .views import (
 )
 
 router = routers.DefaultRouter()
-router.register(r'blog', BlogViewSet)
+router.register(r'blog', BlogViewSet, basename='blog')
 router.register(r'tag', TagViewSet)
 router.register(r'contact', ContactViewSet)
 router.register(r'subscribe', SubscribeViewSet)
