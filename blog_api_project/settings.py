@@ -134,9 +134,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'blog_app.pagination.BlogPagination',
-    'PAGE_SIZE': 6
+    ]
 }
 
 CORS_ORIGIN_ALLOW_ALL = True

@@ -15,12 +15,14 @@ from .serializers import (
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from django.db.models import Q
+from .pagination import BlogPagination
 
 
 # Create your views here.
 class BlogViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
     serializer_class = BlogSerializer
+    pagination_class = BlogPagination
     # queryset = Blog.objects.all()
 
     def get_queryset(self):
