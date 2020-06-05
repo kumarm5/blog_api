@@ -9,6 +9,11 @@ from .models import (
 
 class BlogSerializer(serializers.ModelSerializer):
 
+    tag_id = serializers.SerializerMethodField(source='get_tag_id')
+
+    def get_tag_id(self, obj):
+        return obj.tag.id
+
     def to_representation(self, instance):
         data = super(BlogSerializer, self).to_representation(instance)
         data.update({'user': instance.user.username})

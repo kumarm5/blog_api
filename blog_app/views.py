@@ -28,6 +28,7 @@ class BlogViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Blog.objects.all()
         query = self.request.query_params.get('query', None)
+        tag = self.request.query_params.get('tag', None)
 
         if query is not None:
             queryset = Blog.objects.filter(
@@ -35,6 +36,11 @@ class BlogViewSet(viewsets.ModelViewSet):
                 Q(description__icontains=query) |
                 Q(short_description__icontains=query)
             ).distinct()
+        elif tag is not None:
+            queryset = Blog.objects.filter(
+                tag_id=tag
+            )
+
         return queryset
 
 
