@@ -5,6 +5,7 @@ from .models import (
     Contact,
     Subscribe
 )
+from datetime import datetime
 
 
 class BlogSerializer(serializers.ModelSerializer):
@@ -16,6 +17,12 @@ class BlogSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super(BlogSerializer, self).to_representation(instance)
+
+        created_at = datetime.strftime(instance.created_at, '%d-%m-%Y')
+        updated_at = datetime.strftime(instance.updated_at, '%d-%m-%Y')
+
+        data.update({'created_at': created_at})
+        data.update({'updated_at': updated_at})
         data.update({'user': instance.user.username})
         data.update({'tag': instance.tag.tag_name})
         return data
