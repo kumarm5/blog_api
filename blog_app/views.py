@@ -58,3 +58,13 @@ class ContactViewSet(viewsets.ModelViewSet):
 class SubscribeViewSet(viewsets.ModelViewSet):
     serializer_class = SubscribeSerializer
     queryset = Subscribe.objects.all()
+
+
+class LatestBlogViewSet(viewsets.ModelViewSet):
+    # permission_classes = [IsAuthenticated]
+    serializer_class = BlogSerializer
+    # queryset = Blog.objects.all()
+
+    def get_queryset(self):
+        queryset = Blog.objects.all().order_by('-id')[:1]
+        return queryset
